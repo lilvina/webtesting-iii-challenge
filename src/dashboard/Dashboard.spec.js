@@ -6,7 +6,6 @@ import 'jest-dom/extend-expect';
 import 'react-testing-library';
 
 import Dashboard from './Dashboard.js';
-import Controls from '../controls/Controls.js';
 import Display from '../display/Display.js';
 
 describe('<Dashboard />', () => {
@@ -18,20 +17,16 @@ describe('<Dashboard />', () => {
     const tree = renderer.create(<Dashboard />).toJSON();
     expect(tree).toMatchSnapshot();
   })
-})
 
-describe('<Controls />', () => {
-  it('should render successfully', () => {
-    render(<Controls />)
+  describe('Gate', () => {
+    it('should render unlocked', () => {
+      const { getByText } = render(<Display />)
+      getByText(/unlocked/i)
+    })
+
+    it('should render open', () => {
+      const { getByText } = render(<Display />)
+      getByText(/open/i)
+    })
   })
-
-
-})
-
-describe('<Display />', () => {
-  it('should render successfully', () => {
-    render(<Display />)
-  })
-
-
 })
