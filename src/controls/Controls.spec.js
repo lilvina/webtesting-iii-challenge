@@ -12,5 +12,12 @@ describe('<Controls />', () => {
     render(<Controls />)
   })
 
+  it('should have buttons to toggle closed and locked states', () => {
+    const { getByText } = render(<Controls />)
+    getByText(/lock gate/i)
+    getByText(/close gate/i)
+  })
+
+  
 
 })

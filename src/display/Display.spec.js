@@ -34,4 +34,14 @@ describe('<Display />', () => {
     const {getByText} = render(<Display locked={false}/>)
     expect(getByText(/unlocked/i))
   })
+
+  it('should show when locked or closed, use the red-led class', () => {
+    const { getByText } = render(<Display closed={true}/>)
+    expect(getByText(/closed/i)).toHaveClass('red-led')
+  })
+
+  it('should show when unlocked or open, use the green-led class', () => {
+    const { getByText } = render(<Display locked={true}/>)
+    expect(getByText(/locked/i)).toHaveClass('green-led')
+  })
 })
